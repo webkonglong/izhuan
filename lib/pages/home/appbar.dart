@@ -20,13 +20,15 @@ class barState extends State<Bar>  {
     return Container(
       padding: new EdgeInsets.fromLTRB( 0.0, ScreenUtil().setHeight(10), 0.0, 0.0),
       constraints: new BoxConstraints.expand(
-        height: ScreenUtil().setHeight(170),
+        height: ScreenUtil().setHeight(80),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
             constraints: new BoxConstraints.expand(
-              height: ScreenUtil().setHeight(80),
+              height: ScreenUtil().setHeight(70),
             ),
             decoration: new BoxDecoration(
               border: new Border.all(width: 1.0, color: const Color(0xFFEDEDED)),
@@ -76,9 +78,6 @@ class barState extends State<Bar>  {
               ],
             ),
           ),
-          Text('ceshi', style: TextStyle(
-              fontSize: 20.0
-          ))
         ],
       ),
     );
