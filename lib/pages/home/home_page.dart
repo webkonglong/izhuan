@@ -3,6 +3,51 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+var menuList1 = [{
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tfs/TB1Wxi2trsrBKNjSZFpXXcXhFXa-183-144.png_.webp",
+  "title": "天猫"
+}, {
+  "jump_url": "",
+  "pic_url": "https://img.alicdn.com/tfs/TB10UHQaNjaK1RjSZKzXXXVwXXa-183-144.png?getAvatar=1_.webp",
+  "title": "聚划算"
+}, {
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tfs/TB11rTqtj7nBKNjSZLeXXbxCFXa-183-144.png?getAvatar=1_.webp",
+  "title": "天猫国际"
+}, {
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png?getAvatar=1_.webp",
+  "title": "外卖"
+}, {
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tfs/TB1CMf4tlnTBKNjSZPfXXbf1XXa-183-144.png?getAvatar=1_.webp",
+  "title": "拍卖"
+}];
+
+
+var menuList2 = [{
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tfs/TB1IKqDtpooBKNjSZFPXXXa2XXa-183-144.png_.webp",
+  "title": "天猫超市"
+}, {
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tfs/TB1o0FLtyMnBKNjSZFoXXbOSFXa-183-144.png_.webp",
+  "title": "充值中心"
+}, {
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tfs/TB15nKhtpkoBKNjSZFEXXbrEVXa-183-144.png?getAvatar=1_.webp",
+  "title": "飞猪旅行"
+}, {
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tfs/TB1BqystrZnBKNjSZFrXXaRLFXa-183-144.png?getAvatar=1_.webp",
+  "title": "领金币"
+}, {
+  "jump_url": "",
+  "pic_url": "https://gw.alicdn.com/tfs/TB18P98tyQnBKNjSZFmXXcApVXa-183-144.png?getAvatar=1_.webp",
+  "title": "分类"
+}];
+
 class HomePage extends StatefulWidget {
   @override
   _HomePage createState() => _HomePage();
@@ -13,17 +58,17 @@ class ArcClipper extends CustomClipper<Path> {
   Path getClip(Size size){
     var path = Path();
     path.lineTo(0, 0); //第1个点
-    path.lineTo(0, size.height - 40.0); //第2个点
-    var firstControlPoint = Offset(size.width/2, size.height-60); //第一段曲线控制点
+    path.lineTo(0, size.height - 00); //第2个点
+    var firstControlPoint = Offset(size.width/2, size.height-20); //第一段曲线控制点
 
-    var secondEndPoint = Offset(size.width, size.height-40); //第二段曲线结束点
+    var secondEndPoint = Offset(size.width, size.height-0); //第二段曲线结束点
     path.quadraticBezierTo( //形成曲线
         firstControlPoint.dx,
         firstControlPoint.dy,
         secondEndPoint.dx,
         secondEndPoint.dy);
 
-    path.lineTo(size.width, size.height-40);
+    path.lineTo(size.width, size.height - 0);
     path.lineTo(size.width, 0);
 
     return path;
@@ -45,7 +90,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
   Widget _buildSwiperImageWidget() {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Container(
-      height: ScreenUtil().setHeight(234),
+      height: ScreenUtil().setHeight(194),
       child: ClipPath(
         clipper: ArcClipper(),
         child: Swiper(
@@ -58,14 +103,10 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
                 print(banner_images[index]);
               },
               child: Container(
-                height: ScreenUtil().setHeight(234),
                 child: Stack(
                   children: <Widget>[
                       Container(
-                        // height: ScreenUtil().setHeight(234),
                         child: CachedNetworkImage(
-                          fadeOutDuration: const Duration(milliseconds: 234),
-                          fadeInDuration: const Duration(milliseconds: 750),
                           fit: BoxFit.fill,
                           imageUrl: banner_images[index],
                           errorWidget: (context, url, error) => new Icon(Icons.error),
@@ -77,7 +118,8 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
             );
           },
           itemCount: banner_images.length,
-          pagination: SwiperPagination(),
+          control: null,
+          pagination: null,
           autoplay: true,
           duration: 300,
           onTap: (index) {
@@ -89,10 +131,64 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
     );
   }
 
+  Widget _menuBuildWidget () {
+    // menuList
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+    List<Widget> menuListWidget1 = [];
+    List<Widget> menuListWidget2 = [];
+    for (var i = 0; i < menuList1.length; i++) {
+      menuListWidget1.add(Expanded(
+        flex: 1,
+        child: Column(
+          children: <Widget>[
+            CachedNetworkImage(
+              fit: BoxFit.fill,
+              imageUrl: menuList1[i]['pic_url'],
+            ),
+            Container(
+              margin: new EdgeInsets.fromLTRB(0.0, ScreenUtil().setWidth(10), 0.0, 0.0),
+              child: Text(menuList1[i]['title']),
+            ),
+          ],
+        ),
+      ));
+    }
+
+    for (var i = 0; i < menuList2.length; i++) {
+      menuListWidget2.add(Expanded(
+        flex: 1,
+        child: Column(
+          children: <Widget>[
+            CachedNetworkImage(
+              fit: BoxFit.fill,
+              imageUrl: menuList2[i]['pic_url'],
+            ),
+            Container(
+              margin: new EdgeInsets.fromLTRB(0.0, ScreenUtil().setWidth(10), 0.0, 0.0),
+              child: Text(menuList2[i]['title']),
+            ),
+          ],
+        ),
+      ));
+    }
+
+    return Column(
+      children: <Widget>[
+        Row(
+          children: menuListWidget1,
+        ),
+        Row(
+          children: menuListWidget2,
+        ),
+      ],
+    );
+  }
+
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         _buildSwiperImageWidget(),
+        _menuBuildWidget(),
       ],
     );
   }
