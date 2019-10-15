@@ -28,6 +28,7 @@ dependencies:
   flutter_screenutil: ^0.3.0
   flutter_swiper: ^1.1.6
   cached_network_image: ^0.8.0
+  imei_plugin: 1.1.4
 #  date_format: ^1.0.4
 
 #  event_bus: ^1.1.0
@@ -55,5 +56,16 @@ flutter:
   assets:
      - images/test.jpg
      - images/search_icon.png
+     - images/tb.png
+     - images/home.png
+     - images/home_active.png
+     - images/tool.png
+     - images/tool_active.png
+     - images/rank.png
+     - images/rank_active.png
+     - images/brand.png
+     - images/brand_active.png
+     - images/personal.png
+     - images/personal_active.png
 
 

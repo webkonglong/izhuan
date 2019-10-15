@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:imei_plugin/imei_plugin.dart';
 
+import '../../local_modules/px.dart';
 import './appbar.dart';
 import './home_page.dart';
 
@@ -41,11 +42,17 @@ class _HomePage extends State<Home> with TickerProviderStateMixin <Home> {
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: _tabs.length);
+
+    ImeiPlugin.getImei().then((resp) => {
+      print(resp)
+    });
+//    print(imei);
     super.initState();
   }
 
+
+
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Scaffold(
       backgroundColor: Color.fromRGBO(241, 242, 241, 1),
       appBar: PreferredSize(
@@ -56,12 +63,13 @@ class _HomePage extends State<Home> with TickerProviderStateMixin <Home> {
             isScrollable: true,
             controller: _tabController,
             indicatorColor: Color(0xFFFFFFFF),
-            labelStyle: TextStyle(fontSize: ScreenUtil().setSp(28)),
+            labelStyle: TextStyle(fontSize: Px.px(28)),
             indicatorSize: TabBarIndicatorSize.label,
+            indicatorPadding: EdgeInsets.fromLTRB(0.0, Px.px(10), 0.0, Px.px(10)),
             tabs: _tabs,
           ),
         ),
-        preferredSize: Size.fromHeight(ScreenUtil().setHeight(160)),
+        preferredSize: Size.fromHeight(Px.px(168)),
       ),
       body: TabBarView(
         controller: _tabController,

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:imei_plugin/imei_plugin.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../../local_modules/px.dart';
+
+import '../../local_modules/ajax.dart';
+
+import '../../components/goods.dart';
+
+
 
 var menuList1 = [{
   "jump_url": "",
@@ -87,10 +94,44 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
     'https://gw.alicdn.com/imgextra/i4/15/O1CN01Igfnec1ByuTKLRgp1_!!15-0-lubanu.jpg'
   ];
 
+  var datas = [];
+
+  ScrollController _controller = new ScrollController();
+
+  @override
+  void initState() {
+    ImeiPlugin.getImei().then((resp) => {
+      print(resp)
+    });
+
+    ajax({
+      'type': 'get',
+      'url': 'https://api.zhetaoke.com:10001/api/api_xiaoshi.ashx',
+      'data': {
+        'appkey': 'f1c7c24c8e0c43a0860799a0448ff523',
+        'page_size': 20,
+        'page': 1,
+        'cid': '',
+        'sort': 'new'
+      },
+      'success': (resp) {
+        setState(() {
+          datas = resp;
+        });
+      },
+      'error': (err) {
+        print(err);
+      }
+    });
+
+    super.initState();
+  }
+
+
   Widget _buildSwiperImageWidget() {
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+
     return Container(
-      height: ScreenUtil().setHeight(194),
+      height: Px.px(234),
       child: ClipPath(
         clipper: ArcClipper(),
         child: Swiper(
@@ -133,7 +174,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
 
   Widget _menuBuildWidget () {
     // menuList
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+
     List<Widget> menuListWidget1 = [];
     List<Widget> menuListWidget2 = [];
     for (var i = 0; i < menuList1.length; i++) {
@@ -146,7 +187,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
               imageUrl: menuList1[i]['pic_url'],
             ),
             Container(
-              margin: new EdgeInsets.fromLTRB(0.0, ScreenUtil().setWidth(10), 0.0, 0.0),
+              margin: new EdgeInsets.fromLTRB(0.0, Px.px(10), 0.0, 0.0),
               child: Text(menuList1[i]['title']),
             ),
           ],
@@ -164,7 +205,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
               imageUrl: menuList2[i]['pic_url'],
             ),
             Container(
-              margin: new EdgeInsets.fromLTRB(0.0, ScreenUtil().setWidth(10), 0.0, 0.0),
+              margin: new EdgeInsets.fromLTRB(0.0, Px.px(10), 0.0, 0.0),
               child: Text(menuList2[i]['title']),
             ),
           ],
@@ -184,11 +225,18 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
     );
   }
 
+  Widget _goodsWidget () {
+    return datas.length == 0 ? Text('正在加载') : Goods(datas);
+  }
+
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
+      shrinkWrap: true,
+      controller: _controller,
       children: <Widget>[
         _buildSwiperImageWidget(),
         _menuBuildWidget(),
+        _goodsWidget()
       ],
     );
   }

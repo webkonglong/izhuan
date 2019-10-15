@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
+import './local_modules/px.dart';
 
 import 'pages/home/home.dart';
 import 'pages/brand.dart';
@@ -32,6 +32,7 @@ class routerState extends State<Router> {
       body: list[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
+        backgroundColor: Color(0xFFC8D9DB),
         onTap: (int index) {
           setState(() {
             _currentIndex = index;
@@ -40,24 +41,46 @@ class routerState extends State<Router> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            title: Text('首页', style: TextStyle(color: Colors.blue),),
-            icon: Icon(Icons.home,color: Colors.blue,),
+            title: Container(),
+            icon: Image.asset(
+              _currentIndex != 0 ? "images/home.png" : "images/home_active.png",
+              width: Px.px(_currentIndex != 0 ? 60 : 70),
+              height: Px.px(_currentIndex != 0 ? 60 : 70),
+            ),
           ),
           BottomNavigationBarItem(
-            title: Text('品牌', style: TextStyle(color: Colors.blue),),
-            icon: Icon(Icons.menu,color: Colors.blue,),
+            title: Container(),
+            icon: Image.asset(
+              _currentIndex != 1 ? "images/brand.png" : "images/brand_active.png",
+              width: Px.px(70),
+              height: Px.px(70),
+            ),
           ),
           BottomNavigationBarItem(
-            title: Text('等级', style: TextStyle(color: Colors.blue),),
-            icon: Icon(Icons.menu,color: Colors.blue,),
+            title: Container(),
+            icon: Image.asset(
+              _currentIndex != 2 ? "images/rank.png" : "images/rank_active.png",
+//              width: Px.px(_currentIndex != 2 ? 60 : 70),
+//              height: Px.px(_currentIndex != 2 ? 60 : 70),
+              width: Px.px(70),
+              height: Px.px(70),
+            ),
           ),
           BottomNavigationBarItem(
-            title: Text('工具', style: TextStyle(color: Colors.blue),),
-            icon: Icon(Icons.menu,color: Colors.blue,),
+            title: Container(),
+            icon: Image.asset(
+              _currentIndex != 3 ? "images/tool.png" : "images/tool_active.png",
+              width: Px.px(_currentIndex != 3 ? 60 : 70),
+              height: Px.px(_currentIndex != 3 ? 60 : 70),
+            ),
           ),
           BottomNavigationBarItem(
-            title: Text('我的', style: TextStyle(color: Colors.blue),),
-            icon: Icon(Icons.menu,color: Colors.blue,),
+            title: Container(),
+            icon: Image.asset(
+              _currentIndex != 4 ? "images/personal.png" : "images/personal_active.png",
+              width: Px.px(_currentIndex != 4 ? 60 : 70),
+              height: Px.px(_currentIndex != 4 ? 60 : 70),
+            ),
           ),
         ],
       ),
