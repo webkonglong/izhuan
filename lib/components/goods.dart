@@ -44,11 +44,24 @@ class Goods extends StatelessWidget {
                               children: <Widget>[
                                 Container(
                                   margin: new EdgeInsets.fromLTRB(Px.px(10), 0.0, Px.px(10), 0.0),
-                                  child: Image.asset(
-                                    item['user_type'] == 0 ? "images/tb.png" : "images/tm.png",
-                                    width: Px.px(40),
-                                    height: Px.px(40),
+                                  padding: new EdgeInsets.fromLTRB(Px.px(10), Px.px(5), Px.px(10), Px.px(5)),
+                                  decoration: new BoxDecoration(
+                                    borderRadius: new BorderRadius.all(new Radius.circular(3.0)),
+                                    color: Color(0xFFE88683),
                                   ),
+                                  child: Text(
+                                    item['user_type'] == 0 ? "淘" : "天",
+                                    style: TextStyle(
+                                      color: Color(0xFFFFFFFF),
+                                      fontSize: Px.px(24),
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+//                                  child: Image.asset(
+//                                    item['user_type'] == 0 ? "images/tb.png" : "images/tm.png",
+//                                    width: Px.px(40),
+//                                    height: Px.px(40),
+//                                  ),
                                 ),
                                 Container(
                                   width: Px.px(450),
@@ -66,6 +79,7 @@ class Goods extends StatelessWidget {
                             ),
                             Container(
                               width: Px.px(510),
+                              margin: new EdgeInsets.fromLTRB(0.0, Px.px(14), 0.0, Px.px(14)),
                               child: new Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
