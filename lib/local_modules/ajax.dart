@@ -9,7 +9,6 @@ dynamic ajax (dynamic options) async {
     });
 
     var httpClient = new HttpClient();
-
     try {
       var request = await httpClient.getUrl(Uri.parse(options['url']));
       var response = await request.close();
@@ -19,8 +18,8 @@ dynamic ajax (dynamic options) async {
         options['success'](data['content']);
       }
     } catch (exception) {
-      print("server error");
       options['error'](exception);
+      print("server error");
     }
   }
 }

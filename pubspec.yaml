@@ -57,6 +57,7 @@ flutter:
      - images/test.jpg
      - images/search_icon.png
      - images/tb.png
+     - images/go.png
      - images/home.png
      - images/home_active.png
      - images/tool.png

@@ -6,6 +6,7 @@ class Rank extends StatefulWidget {
 }
 
 class _RankPage extends State<Rank> with TickerProviderStateMixin <Rank> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

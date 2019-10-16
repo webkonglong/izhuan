@@ -95,6 +95,9 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
   ];
 
   var datas = [];
+  var page = 1;
+  var isLoading = false;
+  var end = false;
 
   ScrollController _controller = new ScrollController();
 
@@ -104,27 +107,52 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
       print(resp)
     });
 
+    getData();
+    _controller.addListener(() {
+      if (!end && !isLoading && _controller.position.pixels == _controller.position.maxScrollExtent) {
+        print("底部了");
+        page = page + 1;
+        getData();
+        setState(() {
+          isLoading = true;
+        });
+      }
+    });
+
+    super.initState();
+  }
+
+  getData () {
     ajax({
       'type': 'get',
       'url': 'https://api.zhetaoke.com:10001/api/api_xiaoshi.ashx',
       'data': {
         'appkey': 'f1c7c24c8e0c43a0860799a0448ff523',
         'page_size': 20,
-        'page': 1,
+        'page': page,
         'cid': '',
         'sort': 'new'
       },
       'success': (resp) {
-        setState(() {
-          datas = resp;
-        });
+        if (!end && resp.length == 20) {
+          datas.addAll(resp);
+          setState(() {
+            datas = datas;
+            isLoading = false;
+          });
+        } else {
+          datas.addAll(resp);
+          setState(() {
+            datas = datas;
+            end = true;
+            isLoading = false;
+          });
+        }
       },
       'error': (err) {
         print(err);
       }
     });
-
-    super.initState();
   }
 
 
@@ -226,7 +254,14 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
   }
 
   Widget _goodsWidget () {
-    return datas.length == 0 ? Text('正在加载') : Goods(datas);
+    return datas.length == 0 ? Container(
+      padding: new EdgeInsets.fromLTRB(0.0, Px.px(20), 0.0, Px.px(20)),
+      height: Px.px(80),
+      child: Text("加载中～", style: TextStyle(
+        fontSize: Px.px(28),
+        color: Color(0xFFE88683),
+      ),textAlign: TextAlign.center,),
+    ) : Goods(datas, isLoading, end);
   }
 
   Widget build(BuildContext context) {

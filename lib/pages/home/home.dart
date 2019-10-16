@@ -4,6 +4,7 @@ import 'package:imei_plugin/imei_plugin.dart';
 import '../../local_modules/px.dart';
 import './appbar.dart';
 import './home_page.dart';
+import './home_tab_page.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _HomePage extends State<Home> with TickerProviderStateMixin <Home> {
   @override
 
   final List<Tab> _tabs = <Tab>[
-    new Tab(text: '首页'),
+    new Tab(text: '猜你喜欢'),
     new Tab(text: '母婴'),
     new Tab(text: '内衣'),
     new Tab(text: '男装'),
@@ -75,26 +76,26 @@ class _HomePage extends State<Home> with TickerProviderStateMixin <Home> {
         controller: _tabController,
         children: <Widget>[
           HomePage(),
-          Text('2'),
-          Text('3'),
-          Text('4'),
-          Text('5'),
-          Text('6'),
-          Text('7'),
-          Text('8'),
-          Text('9'),
-          Text('10'),
-          Text('11'),
-          Text('12'),
-          Text('13'),
-          Text('14'),
-          Text('15'),
-          Text('16'),
-          Text('17'),
-          Text('18'),
-          Text('19'),
-          Text('20'),
-          Text('21'),
+          HomeTabPage('母婴'),
+          HomeTabPage('内衣'),
+          HomeTabPage('男装'),
+          HomeTabPage('手机'),
+          HomeTabPage('女装'),
+          HomeTabPage('食品'),
+          HomeTabPage('生鲜'),
+          HomeTabPage('家装'),
+          HomeTabPage('电器'),
+          HomeTabPage('鞋靴'),
+          HomeTabPage('洗护'),
+          HomeTabPage('百货'),
+          HomeTabPage('箱包'),
+          HomeTabPage('饰品'),
+          HomeTabPage('美妆'),
+          HomeTabPage('运动'),
+          HomeTabPage('保健'),
+          HomeTabPage('数码'),
+          HomeTabPage('企业'),
+          HomeTabPage('车品'),
         ],
       ),
     );

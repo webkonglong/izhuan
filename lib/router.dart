@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './local_modules/px.dart';
 
 import 'pages/home/home.dart';
-import 'pages/brand.dart';
+import 'pages/brand/brand.dart';
 import 'pages/tool.dart';
 import 'pages/rank.dart';
 import 'pages/personal.dart';

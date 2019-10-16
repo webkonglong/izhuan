@@ -4,7 +4,9 @@ import '../local_modules/px.dart';
 
 class Goods extends StatelessWidget {
   dynamic datas;
-  Goods(this.datas);
+  dynamic isLoading;
+  dynamic end;
+  Goods(this.datas, this.isLoading, this.end);
 
   String formatPic (dynamic num) {
 
@@ -176,10 +178,37 @@ class Goods extends StatelessWidget {
         );
     }
 
+    if (isLoading) {
+      goodArrWidget.add(
+        Container(
+          padding: new EdgeInsets.fromLTRB(0.0, Px.px(20), 0.0, Px.px(20)),
+          height: Px.px(80),
+          child: Text("加载中,清稍后", style: TextStyle(
+            fontSize: Px.px(28),
+            color: Color(0xFFE88683),
+          ),textAlign: TextAlign.center,),
+        )
+      );
+    }
+
+    if (end) {
+      goodArrWidget.add(
+          Container(
+            padding: new EdgeInsets.fromLTRB(0.0, Px.px(20), 0.0, Px.px(20)),
+            height: Px.px(80),
+            child: Text("我是有底线的～", style: TextStyle(
+              fontSize: Px.px(28),
+              color: Color(0xFFE88683),
+            ),textAlign: TextAlign.center,),
+          )
+      );
+    }
+
     return Column(
       children: goodArrWidget,
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
