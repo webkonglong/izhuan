@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../local_modules/px.dart';
+import 'good_info.dart';
 
 class Goods extends StatelessWidget {
   dynamic datas;
@@ -182,7 +183,11 @@ class Goods extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                print(item);
+                Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
+                  return new GoodInfo(
+                      info: item
+                  );
+                }));
               },
             )
         );
