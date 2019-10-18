@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+
 
 import 'router.dart';
+import './pages/brand/brand_goods.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +13,11 @@ class MyApp extends StatelessWidget {
       title: '爱赚',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(),
-      home: Router(),
+      initialRoute: '/',
+      routes: <String, WidgetBuilder> {
+        '/': (BuildContext context) => Router(),
+        '/brand': (BuildContext context) => BrandGoods(),
+      },
     );
   }
 }

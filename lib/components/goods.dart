@@ -8,10 +8,6 @@ class Goods extends StatelessWidget {
   dynamic end;
   Goods(this.datas, this.isLoading, this.end);
 
-  String formatPic (dynamic num) {
-
-  }
-
   Widget goodListWidget (context) {
     List<Widget> goodArrWidget = [];
 

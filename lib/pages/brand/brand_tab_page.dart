@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../../local_modules/px.dart';
 import '../../local_modules/ajax.dart';
 
-import '../../components/goods.dart';
+import 'brand_goods.dart';
+
 
 class BrandTabPage extends StatefulWidget {
   int tab;
@@ -57,6 +58,7 @@ class _BrandTabPage extends State<BrandTabPage> with TickerProviderStateMixin <B
           if (resp.length != 0) {
             datas.addAll(resp);
           }
+          print(datas);
           setState(() {
             datas = datas;
             end = true;
@@ -66,6 +68,10 @@ class _BrandTabPage extends State<BrandTabPage> with TickerProviderStateMixin <B
       },
       'error': (err) {
         print(err);
+        setState(() {
+          end = true;
+          isLoading = false;
+        });
       }
     });
   }
@@ -125,7 +131,12 @@ class _BrandTabPage extends State<BrandTabPage> with TickerProviderStateMixin <B
           ),
         ),
         onTap: () {
-          print(item['pinpai_name']);
+          Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
+            return new BrandGoods(
+              name: item['pinpai_name'],
+              cid: widget.tab
+            );
+          }));
         },
       ));
     }

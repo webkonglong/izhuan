@@ -7,7 +7,7 @@ dynamic ajax (dynamic options) async {
     options['data'].forEach((k, y) {
       options['url'] = "${options['url']}${options['url'].contains("?") ? "&" : "?"}${k}=${y}";
     });
-
+    print(options['url']);
     var httpClient = new HttpClient();
     try {
       var request = await httpClient.getUrl(Uri.parse(options['url']));
@@ -15,7 +15,11 @@ dynamic ajax (dynamic options) async {
       if (response.statusCode == HttpStatus.OK) {
         var json = await response.transform(utf8.decoder).join();
         var data = jsonDecode(json);
-        options['success'](data['content']);
+        if (data['content'] is String) {
+          options['error'](data['content']);
+        } else {
+          options['success'](data['content']);
+        }
       }
     } catch (exception) {
       options['error'](exception);
