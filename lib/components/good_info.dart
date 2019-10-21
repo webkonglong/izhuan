@@ -10,8 +10,37 @@ class GoodInfo extends StatefulWidget {
   _GoodInfo createState() => _GoodInfo();
 }
 
+
 class _GoodInfo extends State<GoodInfo> with TickerProviderStateMixin <GoodInfo> {
-  // ScrollController _controller = new ScrollController();
+  var bannerIndex = 0;
+
+  Widget titleWidget () {
+    return RichText(
+      text: TextSpan(
+          children: <TextSpan>[
+            TextSpan(
+              text: widget.info['user_type'] == 0 ? "淘宝 " : "天猫 ",
+              style: TextStyle(fontSize: Px.px(28), color: Color(0xFFE88683), fontWeight: FontWeight.w700),
+            ),
+            TextSpan(
+              text: widget.info['tao_title'],
+              style: TextStyle(fontSize: Px.px(28),color: Color(0xFF333333),),
+            ),
+          ]
+      ),
+    );
+  }
+  
+  Widget paddingWidget () {
+    return Container(
+      padding: EdgeInsets.all(Px.px(20)),
+      child: Column(
+        children: <Widget>[
+          titleWidget()
+        ],
+      ),
+    );
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +49,6 @@ class _GoodInfo extends State<GoodInfo> with TickerProviderStateMixin <GoodInfo>
         backgroundColor: Color(0xFFE88683),
       ),
       body: ListView(
-        // shrinkWrap: true,
-        // controller: _controller,
         children: <Widget>[
           CachedNetworkImage(
             fit: BoxFit.fill,
@@ -29,6 +56,7 @@ class _GoodInfo extends State<GoodInfo> with TickerProviderStateMixin <GoodInfo>
             width: Px.px(750),
             errorWidget: (context, url, error) => new Icon(Icons.error),
           ),
+          paddingWidget()
         ],
       )
     );

@@ -37,46 +37,30 @@ class Goods extends StatelessWidget {
                         ),
                         new Column(
                           children: <Widget>[
-                            new Row(
-                              children: <Widget>[
-                                Container(
-                                  margin: new EdgeInsets.fromLTRB(Px.px(10), 0.0, Px.px(10), 0.0),
-                                  padding: new EdgeInsets.fromLTRB(Px.px(10), Px.px(5), Px.px(10), Px.px(5)),
-                                  decoration: new BoxDecoration(
-                                    borderRadius: new BorderRadius.all(new Radius.circular(3.0)),
-                                    color: Color(0xFFE88683),
-                                  ),
-                                  child: Text(
-                                    item['user_type'] == 0 ? "淘" : "天",
-                                    style: TextStyle(
-                                      color: Color(0xFFFFFFFF),
-                                      fontSize: Px.px(24),
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-//                                  child: Image.asset(
-//                                    item['user_type'] == 0 ? "images/tb.png" : "images/tm.png",
-//                                    width: Px.px(40),
-//                                    height: Px.px(40),
-//                                  ),
+                            Container(
+                              width: Px.px(510),
+                              height: Px.px(70),
+                              margin: new EdgeInsets.fromLTRB(Px.px(8), 0.0, 0.0, 0.0),
+                              child: RichText(
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                text: TextSpan(
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: item['user_type'] == 0 ? "淘宝 " : "天猫 ",
+                                        style: TextStyle(fontSize: Px.px(28), color: Color(0xFFE88683), fontWeight: FontWeight.w700),
+                                      ),
+                                      TextSpan(
+                                        text: item['tao_title'],
+                                        style: TextStyle(fontSize: Px.px(28),color: Color(0xFF333333),),
+                                      ),
+                                    ]
                                 ),
-                                Container(
-                                  width: Px.px(450),
-                                  child: Text(
-                                    item['title'],
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: Px.px(28),
-                                      color: Color(0xFF333333),
-                                    ),
-                                  ),
-                                )
-                              ],
+                              ),
                             ),
                             Container(
                               width: Px.px(510),
-                              margin: new EdgeInsets.fromLTRB(0.0, Px.px(14), 0.0, Px.px(14)),
+                              margin: new EdgeInsets.fromLTRB(0.0, Px.px(3), 0.0, 0.0),
                               child: new Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
