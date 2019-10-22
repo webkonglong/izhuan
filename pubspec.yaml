@@ -29,12 +29,13 @@ dependencies:
   flutter_swiper: ^1.1.6
   cached_network_image: ^0.8.0
   imei_plugin: 1.1.4
+  toast: ^0.1.3
+  url_launcher: ^5.0.2
 #  date_format: ^1.0.4
 
 #  event_bus: ^1.1.0
 #  device_info : ^0.2.0
 #  flutter_swiper: ^1.0.6
-#  url_launcher: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -68,5 +69,7 @@ flutter:
      - images/brand_active.png
      - images/personal.png
      - images/personal_active.png
+     - images/personal_income.png
+     - images/personal_iInvitation.png
 
 

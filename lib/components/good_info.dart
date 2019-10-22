@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:toast/toast.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../local_modules/px.dart';
+
 
 class GoodInfo extends StatefulWidget {
   dynamic info;
@@ -13,6 +15,11 @@ class GoodInfo extends StatefulWidget {
 
 class _GoodInfo extends State<GoodInfo> with TickerProviderStateMixin <GoodInfo> {
   var bannerIndex = 0;
+
+  _launchURL() async {
+    String url ="taobao://";
+    await launch(url);
+  }
 
   Widget titleWidget () {
     return RichText(
@@ -140,7 +147,7 @@ class _GoodInfo extends State<GoodInfo> with TickerProviderStateMixin <GoodInfo>
     }
 
     return Container(
-      padding: EdgeInsets.fromLTRB(Px.px(20), 0.0, Px.px(20), 0.0),
+      padding: EdgeInsets.all(Px.px(20)),
       child: Column(
         children: pcDescContentWidgetList,
       ),
@@ -194,32 +201,32 @@ class _GoodInfo extends State<GoodInfo> with TickerProviderStateMixin <GoodInfo>
         children: <Widget>[
           GestureDetector(
             child: Container(
-              height: Px.px(100),
+              height: Px.px(120),
               width: Px.px(375),
               color: Color(0xFFE88683),
               alignment: Alignment.center,
-              child: Text('自买领', style: TextStyle(
+              child: Text('自买省￥${widget.info['tkfee3']}', style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontSize: Px.px(32)
               ),),
             ),
             onTap: () {
-              print('去淘宝领');
+              _launchURL();
             },
           ),
           GestureDetector(
             child: Container(
-              height: Px.px(100),
+              height: Px.px(120),
               width: Px.px(375),
               color: Color(0xFFC51E13),
               alignment: Alignment.center,
-              child: Text('分享赚', style: TextStyle(
+              child: Text('分享赚￥${widget.info['tkfee3']}', style: TextStyle(
                 fontSize: Px.px(32),
                 color: Color(0xFFFFFFFF)
               ),),
             ),
             onTap: () {
-              print('分享赚');
+              Toast.show('分享文案已复制', context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
             },
           ),
         ],

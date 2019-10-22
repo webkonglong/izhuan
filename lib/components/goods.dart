@@ -39,7 +39,7 @@ class Goods extends StatelessWidget {
                           children: <Widget>[
                             Container(
                               width: Px.px(510),
-                              height: Px.px(70),
+                              height: Px.px(73),
                               margin: new EdgeInsets.fromLTRB(Px.px(8), 0.0, 0.0, 0.0),
                               child: RichText(
                                 maxLines: 2,
@@ -60,7 +60,7 @@ class Goods extends StatelessWidget {
                             ),
                             Container(
                               width: Px.px(510),
-                              margin: new EdgeInsets.fromLTRB(0.0, Px.px(3), 0.0, 0.0),
+                              // margin: new EdgeInsets.fromLTRB(0.0, Px.px(3), 0.0, 0.0),
                               child: new Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[

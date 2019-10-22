@@ -10,9 +10,9 @@ class _RankPage extends State<Rank> with TickerProviderStateMixin <Rank> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('排行榜'),),
+      backgroundColor: Color(0xFFDEDFDE),
       body: Center(
-        child: Text('排行榜'),
+        child: Text('11'),
       ),
     );
   }
