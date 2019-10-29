@@ -7,7 +7,15 @@ dynamic ajax (dynamic options) async {
     options['data'].forEach((k, y) {
       options['url'] = "${options['url']}${options['url'].contains("?") ? "&" : "?"}${k}=${y}";
     });
+
+    if (options['datas'] != null) {
+      options['datas'].forEach((k, y) {
+        options['url'] = "${options['url']}${options['url'].contains("?") ? "&" : "?"}${k}=${y}";
+      });
+    }
+
     var httpClient = new HttpClient();
+
     try {
       var request = await httpClient.getUrl(Uri.parse(options['url']));
       var response = await request.close();

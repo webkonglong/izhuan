@@ -3,56 +3,37 @@ import 'package:imei_plugin/imei_plugin.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../local_modules/px.dart';
-
 import '../../local_modules/ajax.dart';
 
 import '../../components/goods.dart';
 
+// menu
+import './large_volume.dart';
+import './quick.dart';
+import './supermarket.dart';
+import './nine.dart';
+import './tmall.dart';
 
-
-var menuList1 = [{
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tfs/TB1Wxi2trsrBKNjSZFpXXcXhFXa-183-144.png_.webp",
-  "title": "天猫"
+var menuList = [{
+  "index": 1,
+  "icon": "images/homemenu/large_volume.png",
+  "title": "大额劵"
 }, {
-  "jump_url": "",
-  "pic_url": "https://img.alicdn.com/tfs/TB10UHQaNjaK1RjSZKzXXXVwXXa-183-144.png?getAvatar=1_.webp",
-  "title": "聚划算"
-}, {
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tfs/TB11rTqtj7nBKNjSZLeXXbxCFXa-183-144.png?getAvatar=1_.webp",
-  "title": "天猫国际"
-}, {
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png?getAvatar=1_.webp",
-  "title": "外卖"
-}, {
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tfs/TB1CMf4tlnTBKNjSZPfXXbf1XXa-183-144.png?getAvatar=1_.webp",
-  "title": "拍卖"
-}];
-
-
-var menuList2 = [{
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tfs/TB1IKqDtpooBKNjSZFPXXXa2XXa-183-144.png_.webp",
+  "index": 2,
+  "icon": "images/homemenu/supermarket.png",
   "title": "天猫超市"
 }, {
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tfs/TB1o0FLtyMnBKNjSZFoXXbOSFXa-183-144.png_.webp",
-  "title": "充值中心"
+  "index": 3,
+  "icon": "images/homemenu/tmall.png",
+  "title": "天猫"
 }, {
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tfs/TB15nKhtpkoBKNjSZFEXXbrEVXa-183-144.png?getAvatar=1_.webp",
-  "title": "飞猪旅行"
+  "index": 4,
+  "icon": "images/homemenu/quick.png",
+  "title": "聚划算"
 }, {
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tfs/TB1BqystrZnBKNjSZFrXXaRLFXa-183-144.png?getAvatar=1_.webp",
-  "title": "领金币"
-}, {
-  "jump_url": "",
-  "pic_url": "https://gw.alicdn.com/tfs/TB18P98tyQnBKNjSZFmXXcApVXa-183-144.png?getAvatar=1_.webp",
-  "title": "分类"
+  "index": 5,
+  "icon": "images/homemenu/99.png",
+  "title": "9.9商品"
 }];
 
 class HomePage extends StatefulWidget {
@@ -141,12 +122,14 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
             isLoading = false;
           });
         } else {
-          datas.addAll(resp);
-          setState(() {
-            datas = datas;
-            end = true;
-            isLoading = false;
-          });
+          if (mounted) {
+            datas.addAll(resp);
+            setState(() {
+              datas = datas;
+              end = true;
+              isLoading = false;
+            });
+          }
         }
       },
       'error': (err) {
@@ -200,56 +183,42 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
     );
   }
 
-  Widget _menuBuildWidget () {
+  Widget _menuBuildWidget (context) {
     // menuList
+    List<Widget> menuListWidget = [];
+    List<Widget> pageListWidget = [null, LargeVolume(), Supermarket(), Tmall(), Quick(), Nine()];
 
-    List<Widget> menuListWidget1 = [];
-    List<Widget> menuListWidget2 = [];
-    for (var i = 0; i < menuList1.length; i++) {
-      menuListWidget1.add(Expanded(
+    for (var i = 0; i < menuList.length; i++) {
+      menuListWidget.add(Expanded(
         flex: 1,
-        child: Column(
-          children: <Widget>[
-            CachedNetworkImage(
-              fit: BoxFit.fill,
-              imageUrl: menuList1[i]['pic_url'],
-            ),
-            Container(
-              margin: new EdgeInsets.fromLTRB(0.0, Px.px(10), 0.0, 0.0),
-              child: Text(menuList1[i]['title']),
-            ),
-          ],
-        ),
+        child: GestureDetector(
+          child: Column(
+            children: <Widget>[
+              Image.asset(
+                menuList[i]['icon'],
+                width: Px.px(100),
+                height: Px.px(100),
+              ),
+              Container(
+                margin: new EdgeInsets.fromLTRB(0.0, Px.px(6), 0.0, 0.0),
+                child: Text(menuList[i]['title']),
+              ),
+            ],
+          ),
+          onTap: () {
+            Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
+              return pageListWidget[menuList[i]['index']];
+            }));
+          },
+        )
       ));
     }
 
-    for (var i = 0; i < menuList2.length; i++) {
-      menuListWidget2.add(Expanded(
-        flex: 1,
-        child: Column(
-          children: <Widget>[
-            CachedNetworkImage(
-              fit: BoxFit.fill,
-              imageUrl: menuList2[i]['pic_url'],
-            ),
-            Container(
-              margin: new EdgeInsets.fromLTRB(0.0, Px.px(10), 0.0, 0.0),
-              child: Text(menuList2[i]['title']),
-            ),
-          ],
-        ),
-      ));
-    }
-
-    return Column(
-      children: <Widget>[
-        Row(
-          children: menuListWidget1,
-        ),
-        Row(
-          children: menuListWidget2,
-        ),
-      ],
+    return Container(
+      margin: EdgeInsets.fromLTRB(0.0, Px.px(10), 0.0, 0.0),
+      child: Row(
+        children: menuListWidget,
+      ),
     );
   }
 
@@ -270,7 +239,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin <HomePage>
       controller: _controller,
       children: <Widget>[
         _buildSwiperImageWidget(),
-        _menuBuildWidget(),
+        _menuBuildWidget(context),
         _goodsWidget()
       ],
     );

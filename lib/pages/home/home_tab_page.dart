@@ -5,8 +5,9 @@ import '../../local_modules/ajax.dart';
 import '../../components/goods.dart';
 
 class HomeTabPage extends StatefulWidget {
-  String tab;
-  HomeTabPage(this.tab);
+  String url;
+  dynamic datas;
+  HomeTabPage(this.url, this.datas);
 
   @override
   _HomeTabPage createState() => _HomeTabPage();
@@ -23,7 +24,7 @@ class _HomeTabPage extends State<HomeTabPage> with TickerProviderStateMixin <Hom
   void initState() {
     getData();
     _controller.addListener(() {
-      if (!end && !isLoading && _controller.position.pixels == _controller.position.maxScrollExtent) {
+      if (!end && !isLoading && _controller.position.pixels == _controller.position.maxScrollExtent && mounted) {
         print("底部了");
         page = page + 1;
         getData();
@@ -39,28 +40,30 @@ class _HomeTabPage extends State<HomeTabPage> with TickerProviderStateMixin <Hom
   getData () {
     ajax({
       'type': 'get',
-      'url': 'https://api.zhetaoke.com:10003/api/api_quanwang.ashx',
+      'url': 'https://api.zhetaoke.com:10003/api/${widget.url}.ashx',
       'data': {
         'appkey': 'f1c7c24c8e0c43a0860799a0448ff523',
         'page_size': 20,
         'page': page,
-        'q': widget.tab,
         'sort': 'new'
       },
+      'datas': widget.datas,
       'success': (resp) {
-        if (!end && resp.length == 20) {
-          datas.addAll(resp);
-          setState(() {
-            datas = datas;
-            isLoading = false;
-          });
-        } else {
-          datas.addAll(resp);
-          setState(() {
-            datas = datas;
-            end = true;
-            isLoading = false;
-          });
+        if (mounted) {
+          if (!end && resp.length == 20) {
+            datas.addAll(resp);
+            setState(() {
+              datas = datas;
+              isLoading = false;
+            });
+          } else {
+            datas.addAll(resp);
+            setState(() {
+              datas = datas;
+              end = true;
+              isLoading = false;
+            });
+          }
         }
       },
       'error': (err) {

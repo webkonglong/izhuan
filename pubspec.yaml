@@ -71,5 +71,20 @@ flutter:
      - images/personal_active.png
      - images/personal_income.png
      - images/personal_iInvitation.png
+     - images/level1.png
+     - images/level2.png
+     - images/icon_go.png
+     - images/homemenu/99.png
+     - images/homemenu/large_volume.png
+     - images/homemenu/jd.png
+     - images/homemenu/brand.png
+     - images/homemenu/pdd.png
+     - images/homemenu/video.png
+     - images/homemenu/taobao.png
+     - images/homemenu/tmall.png
+     - images/homemenu/supermarket.png
+     - images/homemenu/quick.png
+
+
 
 
