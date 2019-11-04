@@ -224,6 +224,14 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
     'icon': 'images/personal_income.png',
     'name': '收入明细',
     'index': 1
+  }, {
+    'icon': 'images/personal_novice.png',
+    'name': '新手引导',
+    'index': 2
+  }, {
+    'icon': 'images/personal_contact.png',
+    'name': '联系我们',
+    'index': 3
   }];
 
 

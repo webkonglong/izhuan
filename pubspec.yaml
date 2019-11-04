@@ -1,5 +1,5 @@
 name: myapp
-description: A new Flutter application.
+description: this is a app.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -71,6 +71,8 @@ flutter:
      - images/personal_active.png
      - images/personal_income.png
      - images/personal_iInvitation.png
+     - images/personal_contact.png
+     - images/personal_novice.png
      - images/level1.png
      - images/level2.png
      - images/icon_go.png
