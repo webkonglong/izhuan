@@ -7,14 +7,23 @@ import 'pages/tool/tool.dart';
 import 'pages/rank/rank.dart';
 import 'pages/personal/personal.dart';
 
-class Router extends StatefulWidget {
+import './pages/brand/brand_goods.dart';
+import './components/good_info.dart';
+import './pages/home/large_volume.dart';
+import './pages/home/quick.dart';
+import './pages/home/supermarket.dart';
+import './pages/home/nine.dart';
+import './pages/home/tmall.dart';
+import './pages/personal/accpunt_status.dart';
+
+class HomeRouter extends StatefulWidget {
   @override
   routerState createState () {
     return routerState();
   }
 }
 
-class routerState extends State<Router> {
+class routerState extends State<HomeRouter> {
   final List<Widget> list = List();
   int _currentIndex = 0;
 
@@ -26,8 +35,6 @@ class routerState extends State<Router> {
 
   @override
   Widget build(BuildContext context) {
-    // ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
-
     return Scaffold(
       body: list[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -80,3 +87,33 @@ class routerState extends State<Router> {
     );
   }
 }
+
+
+class Router extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '爱赚',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(),
+      initialRoute: '/',
+      routes: <String, WidgetBuilder> {
+        '/': (BuildContext context) => HomeRouter(),
+        '/brand': (BuildContext context) => BrandGoods(),
+        '/goodinfo': (BuildContext context) => GoodInfo(),
+        '/largevolume': (BuildContext context) => LargeVolume(),
+        '/quick': (BuildContext context) => Quick(),
+        '/supermarket': (BuildContext context) => Supermarket(),
+        '/nine': (BuildContext context) => Nine(),
+        '/tmall': (BuildContext context) => Tmall(),
+        '/accpuntstatus': (BuildContext context) => AccpuntStatus(),
+      },
+    );
+  }
+}
+
+final ThemeData mDefaultTheme = new ThemeData(
+  primaryColor: Colors.white,
+  scaffoldBackgroundColor: Colors.white,
+  cardColor: Colors.white,
+);
