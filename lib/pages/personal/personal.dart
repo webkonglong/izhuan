@@ -3,6 +3,7 @@ import 'package:toast/toast.dart';
 import '../../local_modules/px.dart';
 
 import 'accpunt_status.dart';
+import 'invitation.dart';
 
 class Personal extends StatefulWidget {
   @override
@@ -273,7 +274,9 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
           ),
         ),
         onTap: () {
-          print(item['index']);
+          Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
+            return Invitation();
+          }));
         },
       ));
     }

@@ -9,7 +9,6 @@ class AccpuntStatus extends StatefulWidget {
 class _AccpuntStatus extends State<AccpuntStatus> with TickerProviderStateMixin <AccpuntStatus> {
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color(0xFFFFFFFF),
       appBar: AppBar(
         title: Text('等级与规则'),
         backgroundColor: Color(0xFFE88683),
@@ -22,16 +21,13 @@ class _AccpuntStatus extends State<AccpuntStatus> with TickerProviderStateMixin 
             color: Color(0xFFF4F4F4),
             width: Px.px(750),
             height: Px.px(68),
-            child: Row(
-              children: <Widget>[
-                Text(
-                  "规则",
-                  style: TextStyle(
-                    color: Color(0xFF5C5C5C),
-                    fontSize: Px.px(28),
-                  ),
-                )
-              ],
+            alignment: Alignment.center,
+            child: Text(
+              "规则",
+              style: TextStyle(
+                color: Color(0xFF5C5C5C),
+                fontSize: Px.px(28),
+              ),
             ),
           ),
           Container(
@@ -82,16 +78,13 @@ class _AccpuntStatus extends State<AccpuntStatus> with TickerProviderStateMixin 
             color: Color(0xFFF4F4F4),
             width: Px.px(750),
             height: Px.px(68),
-            child: Row(
-              children: <Widget>[
-                Text(
-                  "特权",
-                  style: TextStyle(
-                    color: Color(0xFF5C5C5C),
-                    fontSize: Px.px(28),
-                  ),
-                )
-              ],
+            alignment: Alignment.center,
+            child: Text(
+              "特权",
+              style: TextStyle(
+                color: Color(0xFF5C5C5C),
+                fontSize: Px.px(28),
+              ),
             ),
           ),
           Container(
@@ -142,16 +135,13 @@ class _AccpuntStatus extends State<AccpuntStatus> with TickerProviderStateMixin 
             color: Color(0xFFF4F4F4),
             width: Px.px(750),
             height: Px.px(68),
-            child: Row(
-              children: <Widget>[
-                Text(
-                  "名词解释",
-                  style: TextStyle(
-                    color: Color(0xFF5C5C5C),
-                    fontSize: Px.px(28),
-                  ),
-                )
-              ],
+            alignment: Alignment.center,
+            child: Text(
+              "名词解释",
+              style: TextStyle(
+                color: Color(0xFF5C5C5C),
+                fontSize: Px.px(28),
+              ),
             ),
           ),
           Container(
