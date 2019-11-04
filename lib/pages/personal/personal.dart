@@ -4,6 +4,7 @@ import '../../local_modules/px.dart';
 
 import 'accpunt_status.dart';
 import 'invitation.dart';
+import 'income.dart';
 
 class Personal extends StatefulWidget {
   @override
@@ -276,6 +277,7 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
         onTap: () {
           Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
             return Invitation();
+            // return Income();
           }));
         },
       ));
@@ -290,7 +292,7 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFDEDFDE),
+      backgroundColor: Color(0xFFF8F8F8),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(255, 255, 255, 1),
         title: Text('个人中心', style: TextStyle(

@@ -94,7 +94,7 @@ class _BrandGoodsPage extends State<BrandGoods> with TickerProviderStateMixin <B
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(241, 242, 241, 1),
+      backgroundColor: Color.fromRGBO(248, 248, 248, 1),
       appBar: AppBar(
         title: Text('${widget.name}专区'),
         backgroundColor: Color(0xFFE88683),

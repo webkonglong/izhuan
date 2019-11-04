@@ -55,7 +55,7 @@ class _HomePage extends State<Home> with TickerProviderStateMixin <Home> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(241, 242, 241, 1),
+      backgroundColor: Color.fromRGBO(248, 248, 248, 1),
       appBar: PreferredSize(
         child: AppBar(
           backgroundColor: Color.fromRGBO(234, 133, 129, 1),
