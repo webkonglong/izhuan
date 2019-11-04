@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import '../../local_modules/px.dart';
 
+import 'accpunt_status.dart';
+
 class Personal extends StatefulWidget {
   @override
   _PersonalPage createState() => _PersonalPage();
@@ -155,7 +157,9 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
         ),
       ),
       onTap: () {
-        print('查看等级规则');
+        Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
+          return AccpuntStatus();
+        }));
       },
     );
   }
