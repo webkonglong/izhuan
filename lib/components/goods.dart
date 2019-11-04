@@ -60,12 +60,10 @@ class Goods extends StatelessWidget {
                             ),
                             Container(
                               width: Px.px(510),
-                              // margin: new EdgeInsets.fromLTRB(0.0, Px.px(3), 0.0, 0.0),
                               child: new Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Container(// 240
-                                    // height: ScreenUtil().setHeight(50),
                                     child: new Row(
                                       children: <Widget>[
                                         Container(

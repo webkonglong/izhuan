@@ -5,6 +5,7 @@ import '../../local_modules/px.dart';
 import 'accpunt_status.dart';
 import 'invitation.dart';
 import 'income.dart';
+import 'contact.dart';
 
 class Personal extends StatefulWidget {
   @override
@@ -276,8 +277,9 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
         ),
         onTap: () {
           Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
-            return Invitation();
+            // return Invitation();
             // return Income();
+            return Contact();
           }));
         },
       ));

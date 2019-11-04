@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../local_modules/px.dart';
 
-class AccpuntStatus extends StatefulWidget {
-  @override
-  _AccpuntStatus createState() => _AccpuntStatus();
-}
 
-class _AccpuntStatus extends State<AccpuntStatus> with TickerProviderStateMixin <AccpuntStatus> {
+class AccpuntStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
