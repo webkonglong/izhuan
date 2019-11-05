@@ -19,6 +19,7 @@ import './pages/personal/invitation.dart';
 import './pages/personal/income.dart';
 import './pages/personal/contact.dart';
 import './pages/personal/novice.dart';
+import './pages/personal/privacy.dart';
 
 class HomeRouter extends StatefulWidget {
   @override
@@ -115,6 +116,7 @@ class Router extends StatelessWidget {
         '/income': (BuildContext context) => Income(),
         '/contact': (BuildContext context) => Contact(),
         '/novice': (BuildContext context) => Novice(),
+        '/privacy': (BuildContext context) => Privacy(),
       },
     );
   }

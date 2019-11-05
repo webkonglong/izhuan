@@ -7,6 +7,7 @@ import 'invitation.dart';
 import 'income.dart';
 import 'contact.dart';
 import 'novice.dart';
+import 'privacy.dart';
 
 class Personal extends StatefulWidget {
   @override
@@ -225,27 +226,32 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
   }
 
   var menuList = [{
+    'icon': 'images/personal_privacy.png',
+    'name': '必看隐私',
+    'index': 0
+  },{
     'icon': 'images/personal_iInvitation.png',
     'name': '邀请记录',
-    'index': 0
+    'index': 1
   }, {
     'icon': 'images/personal_income.png',
     'name': '收入明细',
-    'index': 1
+    'index': 2
   }, {
     'icon': 'images/personal_novice.png',
     'name': '新手引导',
-    'index': 2
+    'index': 3
   }, {
     'icon': 'images/personal_contact.png',
     'name': '联系我们',
-    'index': 3
+    'index': 4
   }];
 
 
 
   Widget menuWidget () {
     List<Widget> menuArrWidget = [];
+    List<Widget> pageMenuWidget = [Privacy(), Invitation(), Income(), Novice(), Contact()];
     for (var item in menuList) {
       menuArrWidget.add(GestureDetector(
         child: Container(
@@ -267,21 +273,18 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
                     margin: EdgeInsets.fromLTRB(Px.px(10), 0.0, 0.0, 0.0),
                     child: Text(item['name'], style: TextStyle(
                         fontSize: Px.px(32),
-                        color: Color(0xFF666666)
+                        color: item['index'] == 0 ? Color(0xFFE88683) : Color(0xFF666666)
                     ),),
                   )
                 ],
               ),
-              Image.asset("images/icon_go.png", height: Px.px(40),)
+              Image.asset("images/icon_go.png", height: Px.px(item['index'] == 0 ? 50 : 40),)
             ],
           ),
         ),
         onTap: () {
           Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
-            // return Invitation();
-            // return Income();
-            // return Contact();
-            return Novice();
+            return pageMenuWidget[item['index']];
           }));
         },
       ));
