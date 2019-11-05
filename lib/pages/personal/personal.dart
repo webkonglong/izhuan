@@ -6,6 +6,7 @@ import 'accpunt_status.dart';
 import 'invitation.dart';
 import 'income.dart';
 import 'contact.dart';
+import 'novice.dart';
 
 class Personal extends StatefulWidget {
   @override
@@ -279,7 +280,8 @@ class _PersonalPage extends State<Personal> with TickerProviderStateMixin <Perso
           Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
             // return Invitation();
             // return Income();
-            return Contact();
+            // return Contact();
+            return Novice();
           }));
         },
       ));

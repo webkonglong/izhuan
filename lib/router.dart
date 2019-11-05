@@ -18,6 +18,7 @@ import './pages/personal/accpunt_status.dart';
 import './pages/personal/invitation.dart';
 import './pages/personal/income.dart';
 import './pages/personal/contact.dart';
+import './pages/personal/novice.dart';
 
 class HomeRouter extends StatefulWidget {
   @override
@@ -113,6 +114,7 @@ class Router extends StatelessWidget {
         '/invitation': (BuildContext context) => Invitation(),
         '/income': (BuildContext context) => Income(),
         '/contact': (BuildContext context) => Contact(),
+        '/novice': (BuildContext context) => Novice(),
       },
     );
   }
