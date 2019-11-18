@@ -80,13 +80,16 @@ flutter:
      - images/homemenu/99.png
      - images/homemenu/large_volume.png
      - images/homemenu/jd.png
-     - images/homemenu/brand.png
      - images/homemenu/pdd.png
      - images/homemenu/video.png
      - images/homemenu/taobao.png
      - images/homemenu/tmall.png
      - images/homemenu/supermarket.png
      - images/homemenu/quick.png
+     - images/rank_banner.png
+     - images/1.png
+     - images/2.png
+     - images/3.png
 
 
 
